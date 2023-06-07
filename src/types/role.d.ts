@@ -1,0 +1,1 @@
+type Role = 'admin' | 'agent' | 'user' | 'owner';

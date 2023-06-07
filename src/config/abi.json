@@ -1,0 +1,1269 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "admin",
+				"type": "address"
+			}
+		],
+		"name": "AddAdmin",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "agent",
+				"type": "address"
+			}
+		],
+		"name": "AddAgent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "admin",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "chasis",
+				"type": "string"
+			}
+		],
+		"name": "ApproveVehicle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "chasis",
+				"type": "string"
+			}
+		],
+		"name": "EntryVehicle",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "admin",
+				"type": "address"
+			}
+		],
+		"name": "RemoveAdmin",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "agent",
+				"type": "address"
+			}
+		],
+		"name": "RemoveAgent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "admin",
+				"type": "address"
+			}
+		],
+		"name": "UpdateAdmin",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "agent",
+				"type": "address"
+			}
+		],
+		"name": "UpdateAgent",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "addAgent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "approveVehicle",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "plateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "chasis_no",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "father_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "living_address",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "sex",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "phone",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "nationality",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "guardian_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dob",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nid",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VehicleRegistration.VehicleOwnerData",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "price",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "invoice_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "stamp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tax",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "insurance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "entryBy",
+						"type": "address"
+					}
+				],
+				"internalType": "struct VehicleRegistration.VehicleData",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "entryVehicle",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "getAdmin",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAdmins",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_agent",
+				"type": "address"
+			}
+		],
+		"name": "getAgent",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAgents",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllVehicles",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "plateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "chasis_no",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "father_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "living_address",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "sex",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "phone",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "nationality",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "guardian_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dob",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nid",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VehicleRegistration.VehicleOwnerData",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "price",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "invoice_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "stamp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tax",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "insurance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "entryBy",
+						"type": "address"
+					}
+				],
+				"internalType": "struct VehicleRegistration.VehicleData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getVehiclesByEntrer",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "plateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "chasis_no",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "father_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "living_address",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "sex",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "phone",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "nationality",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "guardian_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dob",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nid",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VehicleRegistration.VehicleOwnerData",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "price",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "invoice_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "stamp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tax",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "insurance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "entryBy",
+						"type": "address"
+					}
+				],
+				"internalType": "struct VehicleRegistration.VehicleData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "isAdmin",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "isAgent",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "removeAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_agent",
+				"type": "address"
+			}
+		],
+		"name": "removeAgent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "updateAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "living_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "image_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "nid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "created_at",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "flag",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct VehicleRegistration.User",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "updateAgent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "viewPlateNumber",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "viewRegistrarAddress",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "viewRegistrarName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "viewVehicleData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "plateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "chasis_no",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "father_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "living_address",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "sex",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "phone",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "nationality",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "guardian_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dob",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nid",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VehicleRegistration.VehicleOwnerData",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "price",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "invoice_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "stamp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tax",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "insurance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "entryBy",
+						"type": "address"
+					}
+				],
+				"internalType": "struct VehicleRegistration.VehicleData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chasis",
+				"type": "string"
+			}
+		],
+		"name": "viewentryBy",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
