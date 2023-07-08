@@ -7,13 +7,15 @@ interface VehicleUser {
     nationality: string;
     guardian_name: string;
     dob: string;
-    nid: number,
+    nid: string,
 }
 
-type User = {
+type VehicleData = {
     chasis_no: string;
     user: VehicleUser;
     price: string;
+    cc: string;
+    car_type: string;
     invoice_url: string;
     color: string;
     stamp: string;
@@ -21,6 +23,7 @@ type User = {
     insurance: string;
     signature: string;
     approved?: boolean;
-    entryBy?: string;
+    agent: string;
+    entryBy: string;
     plateNumber?: string;
 }

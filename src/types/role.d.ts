@@ -1,1 +1,1 @@
-type Role = 'admin' | 'agent' | 'user' | 'owner';
+type Role = 'admin' | 'agent' | 'user' | 'owner' | undefined;

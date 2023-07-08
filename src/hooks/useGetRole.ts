@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { useReadContract } from '@hooks/contract-read';
 export const useGetRole = () => {
-    const [role, setRole] = useState<Role | undefined>(undefined);
+    const [role, setRole] = useState<Role>(undefined);
     const { address } = useAccount();
     const { IsAdmin, IsAgent, IsOwner } = useReadContract();
     const { data: isAdmin, isError: isAdminError, isLoading: isAdminLoading } = IsAdmin(address || '');

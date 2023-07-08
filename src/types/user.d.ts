@@ -6,5 +6,7 @@ type UserData = {
     nid: string;
     phone: string;
     created_at: string;
+    branch: string;
     flag: boolean;
+    admin: boolean;
 }

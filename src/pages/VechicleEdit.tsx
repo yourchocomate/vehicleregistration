@@ -5,39 +5,42 @@ import { useReadContract } from "@/hooks/contract-read";
 import { useVehicleEntry } from "@/hooks/contract-write";
 import { truncate } from "@/utils/Helpers";
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAccount } from "wagmi";
 
-const VehicleEntry = () => {
+const VehicleEdit = () => {
 
+    const { chasis } = useParams();
     const navigate = useNavigate();
     const { address } = useAccount();
     const { role } = useApp();
 
+    const { data: vhData, isLoading: vhLoading } = useReadContract().GetVehicleData(chasis as string);
+
     const initialData: VehicleData = {
-        chasis_no: Math.floor(Math.random() * 10000000000).toString(),
+        chasis_no: "",
         user: {
-            name: "John Doe",
-            father_name: "James Doe",
-            living_address: "123 Main St",
-            sex: "Male",
-            phone: "1234567890",
-            nationality: "US",
-            guardian_name: "Jane Doe",
-            dob: "01-01-1990",
-            nid: "12345365476",
+            name: "",
+            father_name: "",
+            living_address: "",
+            sex: "",
+            phone: "",
+            nationality: "",
+            guardian_name: "",
+            dob: "",
+            nid: "",
         },
-        price: "1000",
-        cc: "100",
-        car_type: "1",
-        invoice_url: "http://example.com/invoice",
-        color: "Red",
-        stamp: "ABC",
-        tax: "10",
-        insurance: "Yes",
-        signature: "nai",
+        price: "",
+        cc: "",
+        car_type: "",
+        invoice_url: "",
+        color: "",
+        stamp: "",
+        tax: "",
+        insurance: "",
+        signature: "",
         approved: false,
         agent: "",
         entryBy: address as string,
@@ -66,12 +69,12 @@ const VehicleEntry = () => {
 
 
     const { data: agents, isLoading } = useReadContract().GetAgentList();
-    const { entry } = useVehicleEntry("entry");
+    const { entry } = useVehicleEntry("update");
 
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const contract = entry(data);
-        toast.promise(contract, { loading: "Submitting...", success: "Vehicle entry successful", error: "Vehicle entry failed" });
+        toast.promise(contract, { loading: "Submitting...", success: "Vehicle update successful", error: "Vehicle update failed" });
         contract.then((res) => {
             if(res) {
                 toast.success(`Hash: ${truncate(res?.hash, 10)}`, {
@@ -88,13 +91,23 @@ const VehicleEntry = () => {
         });
     }
 
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        if(!mounted && vhData && !vhLoading) {
+            setMounted(true);
+            setData(vhData);
+            console.log(vhData);
+        }
+    }, [vhData, vhLoading]);
+
     return (
         <Card shadow={true} className="p-4 w-full items-start">
             <Typography variant="h4" color="blue-gray">
-                Entry Vehicle Data
+                Edit Vehicle Data
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
-                Enter your details to register.
+                Enter details to edit.
             </Typography>
             <form className="mt-8 mb-2 w-full" onSubmit={handleSubmit}>
                 <Typography variant="h6" color="blue-gray">
@@ -104,7 +117,7 @@ const VehicleEntry = () => {
                     <Input size="lg" name="name" label="Name" value={data.user.name} onChange={handleUserInputChange}/>
                     <Input size="lg" name="father_name" label="Father's name" value={data.user.father_name} onChange={handleUserInputChange}/>
                     <Input size="lg" name="living_address" label="Address" value={data.user.living_address} onChange={handleUserInputChange}/>
-                    <Input size="lg" name="nid" label="NID" value={data.user.nid} onChange={handleUserInputChange}/>
+                    <Input size="lg" name="nid" label="NID" value={data.user.nid.toString()} onChange={handleUserInputChange}/>
                     <Input size="lg" name="phone" label="Phone" value={data.user.phone} onChange={handleUserInputChange}/>
                     <Input size="lg" name="sex" label="Sex" value={data.user.sex} onChange={handleUserInputChange}/>
                     <Input size="lg" name="nationality" label="Nationality" value={data.user.nationality} onChange={handleUserInputChange}/>
@@ -120,7 +133,7 @@ const VehicleEntry = () => {
                     <Input size="lg" name="cc" label="Engine CC" value={data.cc} onChange={handleInputChange}/>
                     <CustomSelect label="Select Car Type" 
                         options={CAR_TYPE} 
-                        value={data.car_type} 
+                        value={data.car_type.toString()} 
                         onChange={(value) => setData({ ...data, car_type: value })}
                     />
                     <Input size="lg" name="invoice_url" label="Invoice URL" value={data.invoice_url} onChange={handleInputChange}/>
@@ -146,4 +159,4 @@ const VehicleEntry = () => {
     )
 }
 
-export default VehicleEntry;
+export default VehicleEdit;

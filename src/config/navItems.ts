@@ -6,8 +6,8 @@ export default [
     },
     {
         "label": "Entry",
-        "to": "/entry",
-        "roles": ["admin", "owner", "agent"]
+        "to": "entry",
+        "roles": ["admin", "owner", "agent", "user"]
     },
     {
         "label": "Admins",
@@ -16,17 +16,7 @@ export default [
     },
     {
         "label": "Agents",
-        "to": "/entry",
-        "roles": ["admin", "owner"]
-    },
-    {
-        "label": "About",
-        "to": "/about",
-        "roles": ["admin", "owner", "agent", "user"]
-    },
-    {
-        "label": "Contact",
-        "to": "/contact",
-        "roles": ["admin", "owner", "agent", "user"]
+        "to": "manage-agents",
+        "roles": ["admin", "owner", "agent"]
     }
 ]

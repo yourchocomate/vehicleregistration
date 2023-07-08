@@ -1,7 +1,9 @@
+import Lottie from 'lottie-react';
+import Robot from "@/assets/lottie/robot.json"
 export default function NotFound() {
   return (
-    <div>
-        <h1>404</h1>
+    <div className="w-1/2">
+        <Lottie animationData={Robot} />
     </div>
   )
 }

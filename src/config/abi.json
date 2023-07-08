@@ -135,6 +135,25 @@
 		"type": "event"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "chasis",
+				"type": "string"
+			}
+		],
+		"name": "UpdateVehicle",
+		"type": "event"
+	},
+	{
 		"inputs": [
 			{
 				"components": [
@@ -172,6 +191,16 @@
 						"internalType": "string",
 						"name": "created_at",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
 					},
 					{
 						"internalType": "bool",
@@ -227,6 +256,16 @@
 						"internalType": "string",
 						"name": "created_at",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
 					},
 					{
 						"internalType": "bool",
@@ -330,6 +369,16 @@
 					},
 					{
 						"internalType": "string",
+						"name": "cc",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "car_type",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
 						"name": "invoice_url",
 						"type": "string"
 					},
@@ -362,6 +411,11 @@
 						"internalType": "bool",
 						"name": "approved",
 						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "agent",
+						"type": "address"
 					},
 					{
 						"internalType": "address",
@@ -427,6 +481,16 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
+					},
+					{
 						"internalType": "bool",
 						"name": "flag",
 						"type": "bool"
@@ -480,6 +544,16 @@
 						"internalType": "string",
 						"name": "created_at",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
 					},
 					{
 						"internalType": "bool",
@@ -543,6 +617,16 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
+					},
+					{
 						"internalType": "bool",
 						"name": "flag",
 						"type": "bool"
@@ -551,6 +635,41 @@
 				"internalType": "struct VehicleRegistration.User",
 				"name": "",
 				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAgentList",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "phone",
+						"type": "string"
+					}
+				],
+				"internalType": "struct VehicleRegistration.AgentList[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -598,6 +717,16 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
+					},
+					{
 						"internalType": "bool",
 						"name": "flag",
 						"type": "bool"
@@ -612,8 +741,14 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getAllVehicles",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_agent",
+				"type": "address"
+			}
+		],
+		"name": "getVehiclesByAgent",
 		"outputs": [
 			{
 				"components": [
@@ -686,6 +821,16 @@
 					},
 					{
 						"internalType": "string",
+						"name": "cc",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "car_type",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
 						"name": "invoice_url",
 						"type": "string"
 					},
@@ -718,6 +863,11 @@
 						"internalType": "bool",
 						"name": "approved",
 						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "agent",
+						"type": "address"
 					},
 					{
 						"internalType": "address",
@@ -808,6 +958,16 @@
 					},
 					{
 						"internalType": "string",
+						"name": "cc",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "car_type",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
 						"name": "invoice_url",
 						"type": "string"
 					},
@@ -840,6 +1000,11 @@
 						"internalType": "bool",
 						"name": "approved",
 						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "agent",
+						"type": "address"
 					},
 					{
 						"internalType": "address",
@@ -992,6 +1157,16 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
+					},
+					{
 						"internalType": "bool",
 						"name": "flag",
 						"type": "bool"
@@ -1047,6 +1222,16 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "branch",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "admin",
+						"type": "bool"
+					},
+					{
 						"internalType": "bool",
 						"name": "flag",
 						"type": "bool"
@@ -1058,6 +1243,143 @@
 			}
 		],
 		"name": "updateAgent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "plateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "chasis_no",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "father_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "living_address",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "sex",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "phone",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "nationality",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "guardian_name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dob",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nid",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VehicleRegistration.VehicleOwnerData",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "price",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "cc",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "car_type",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "invoice_url",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "stamp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tax",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "insurance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "agent",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "entryBy",
+						"type": "address"
+					}
+				],
+				"internalType": "struct VehicleRegistration.VehicleData",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "updateVehicle",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -1200,6 +1522,16 @@
 					},
 					{
 						"internalType": "string",
+						"name": "cc",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "car_type",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
 						"name": "invoice_url",
 						"type": "string"
 					},
@@ -1232,6 +1564,11 @@
 						"internalType": "bool",
 						"name": "approved",
 						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "agent",
+						"type": "address"
 					},
 					{
 						"internalType": "address",

@@ -12,15 +12,15 @@ import {
 import { useReadContract } from "@hooks/contract-read";
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useAddUpdateUser } from "@/hooks/contract-write/useAddUpdateUser";
-import { toast } from "react-hot-toast";
-import UserTableRow from '@/components/blocks/UserTableRow';
-import { getContractErrorMessage } from "@/utils/ExceptionHandlers";
 import { truncate } from "@/utils/Helpers";
-import { ADMINLIST_TABLE_HEAD } from "@/config/constants";
+import { useAddUpdateUser } from '@hooks/contract-write/useAddUpdateUser';
+import { toast } from "react-hot-toast";
 import { useApp, useDebounce } from "@/hooks";
+import { getContractErrorMessage } from "@/utils/ExceptionHandlers";
+import UserTableRow from "@/components/blocks/UserTableRow";
+import { ADMINLIST_TABLE_HEAD } from "@/config/constants";
 
-const ManageAdmins = () => {
+const ManageAgents = () => {
 
     const navigate = useNavigate();
     const { role } = useApp();
@@ -30,11 +30,12 @@ const ManageAdmins = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const [filtered, setFiltered] = useState<UserData[]>([]);
-    const { isLoading, data: fetchedData} = useReadContract().GetAllAdmins();
-    const { mutate } = useAddUpdateUser("remove", "Admin");
+    const { isLoading, data: fetchedData} = useReadContract().GetAllAgents();
+    const { mutate } = useAddUpdateUser("remove", "Agent");
 
     const data = filtered.length > 0 ? filtered : fetchedData;
     const totalPages = Math.ceil(data.length / rowsPerPage) || 1;
+
     const paginate = (array: UserData[], page_size: number, page_number: number) => {
         return array.slice((page_number - 1) * page_size, page_number * page_size);
     };
@@ -55,7 +56,7 @@ const ManageAdmins = () => {
         }).catch((error) => {
             toast.error(getContractErrorMessage(error));
         });
-    }  
+    }
     
     useEffect(() => {
         if(debouncedSearch !== "") {
@@ -83,25 +84,29 @@ const ManageAdmins = () => {
                         color="blue-gray"
                         className="text-center md:text-left"
                         >
-                        All Admins
+                        All Agents
                         </Typography>
                         <Typography color="gray" className="mt-1 font-normal">
                         These are details about the last transactions
                         </Typography>
                     </div>
                     <div className="flex w-full shrink-0 gap-2 md:w-max">
-                        <Button
-                        onClick={() => navigate("/add-user")}
-                        className="md:ml-4"
-                        >
-                        Add User
-                        </Button>
+                        {
+                            ["owner", "admin"].includes(role as string) && (
+                                <Button
+                                    onClick={() => {navigate("/add-user")}}
+                                    className="md:ml-4"
+                                >
+                                Add User
+                                </Button>
+                            )
+                        }
                         <div className="w-full md:w-72">
                         <Input
                             label="Search"
-                            icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                         />
                         </div>
                     </div>
@@ -131,40 +136,40 @@ const ManageAdmins = () => {
                         {isLoading ? (
                         <tr>
                             <td colSpan={6}>
-                                <Spinner color="pink" />
+                            <Spinner color="pink" />
                             </td>
                         </tr>
                         ) : (
-                        paginatedData.map(({
+                            paginatedData.map(({
                                 _address,
                                 name,
-                                branch,
                                 nid,
                                 phone,
                                 living_address,
+                                branch,
                                 admin,
                                 created_at
                             },index) => (
                                 <UserTableRow
                                     key={index + nid}
                                     index={index}
-                                    branch={branch}
                                     _address={_address}
                                     length={data.length}
                                     name={name}
                                     nid={nid}
                                     phone={phone}
                                     living_address={living_address}
+                                    branch={branch}
                                     created_at={created_at}
                                     mutate={handleMutate}
                                     admin={admin}
                                     role={role}
-                                    type="Admin"
+                                    type="Agent"
                                 />
                             )
                         ))}
                     </tbody>
-                    </table>
+                </table>
                 </CardBody>
                 <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
                     <Button variant="outlined" color="blue-gray" size="sm" onClick={() => {
@@ -201,4 +206,4 @@ const ManageAdmins = () => {
     )
 }
 
-export default ManageAdmins;
+export default ManageAgents;

@@ -1,33 +1,23 @@
-import { usePrepareContractWrite } from "wagmi"
 import { REGISTER_CONTRACT_ABI, REGISTER_CONTRACT_ADDRESS } from "@config/constants"
-import { useState } from "react";
-import { useWriteContract } from "./useWriteContract";
+import { prepareWriteContract, writeContract } from "wagmi/actions";
 
 export const useApproveVehicle = () => {
 
-    const [chasisNo, setChasisNo] = useState<string>("");
+    const approve = async(chasis_no: string) => {
+        const { request } = await prepareWriteContract({
+            address: REGISTER_CONTRACT_ADDRESS,
+            abi: REGISTER_CONTRACT_ABI,
+            functionName: "approveVehicle",
+            args: [chasis_no],
+        });
 
-    // const debouncedChasisNo = useDebounce(chasisNo, 500);
+        const result = await writeContract(request);
 
-    const { config } = usePrepareContractWrite({
-        address: REGISTER_CONTRACT_ADDRESS,
-        abi: REGISTER_CONTRACT_ABI,
-        functionName: "approveVehicle",
-        args: [chasisNo],
-        enabled: chasisNo.length > 0
-    })
-
-    const contract = useWriteContract(config);
-
-    function approve(chasis_no: string) {
-        setChasisNo(chasis_no);
-        contract.write?.();
+        return result;
     }
 
     return {
-        setChasisNo,
         approve,
-        ...contract
     }
 
 }

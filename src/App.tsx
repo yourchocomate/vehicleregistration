@@ -13,9 +13,13 @@ import ProtectedRoute from '@components/ProtectedRoute'
 import VehicleEntry from '@pages/VechicleEntry'
 import ManageAdmins from '@pages/admin/ManageAdmins';
 import AddUser from '@pages/admin/AddUser'
+import ManageAgents from '@pages/admin/ManageAgents'
+import EditUser from '@pages/admin/EditUser'
+import AllApplications from '@pages/AllApplications'
+import VehicleEdit from '@pages/VechicleEdit'
 
 const chains = [arbitrum, mainnet, polygon, bsc, bscTestnet, localhost]
-const projectId = '54ba7097e25703e098de8fb650c658c7'
+const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID;
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
 const wagmiConfig = createConfig({
@@ -36,12 +40,23 @@ function App() {
             <div className="mx-auto max-w-screen-xl flex items-center justify-center flex-1 w-full text-center mt-2">
               <Routes>
                 <Route path="/" Component={HomePage}/>
+                <Route path="entry" Component={VehicleEntry}/>
+                <Route path="/" element={<ProtectedRoute roles={["admin", "owner", "agent"]}/>}>
+                  <Route path="edit-entry/:chasis" Component={VehicleEdit}/>
+                </Route>
                 <Route path="owner/" element={<ProtectedRoute roles={["owner"]}/>}>
                   <Route path="manage-admins" Component={ManageAdmins}/>
-                  <Route path="add-user" Component={AddUser}/>
+                  <Route path="edit-user/:role/:address" Component={EditUser}/>
                 </Route>
                 <Route path="/" element={<ProtectedRoute roles={["admin", "owner"]}/>}>
-                  <Route path="entry" Component={VehicleEntry}/>
+                  <Route path="add-user" Component={AddUser}/>
+                  <Route path="edit-user/:role/:address" Component={EditUser}/>
+                </Route>
+                <Route path="/" element={<ProtectedRoute roles={["admin", "owner", "agent"]}/>}>
+                  <Route path="manage-agents" Component={ManageAgents}/>
+                </Route>
+                <Route path="agent/" element={<ProtectedRoute roles={["admin", "owner", "agent"]}/>}>
+                  <Route path="entries/:agent" Component={AllApplications} />
                 </Route>
                 <Route path="*" Component={NotFound}/>
               </Routes>

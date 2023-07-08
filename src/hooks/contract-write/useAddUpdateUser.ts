@@ -1,40 +1,28 @@
 import {
-    REGISTER_CONTRACT_ABI,
-    REGISTER_CONTRACT_ADDRESS,
-  } from "@config/constants";
-  import {
-    usePrepareContractWrite
-  } from "wagmi";
-  import { useState } from "react";
-  import { toast } from "react-hot-toast";
-  import { getContractErrorMessage } from "@utils/ExceptionHandlers";
-  import { useWriteContract } from "./useWriteContract";
+  REGISTER_CONTRACT_ABI,
+  REGISTER_CONTRACT_ADDRESS,
+} from "@config/constants";
+import {
+  prepareWriteContract, writeContract
+} from "wagmi/actions";
   
-  export const useAddUpdateUser = (method: "add" | "update", type: "Admin" | "Agent") => {
+  export const useAddUpdateUser = (method: "add" | "update" | "remove", type: "Admin" | "Agent") => {
   
-    const [data, setData] = useState<UserData | null>(null);
-  
-    const { config } = usePrepareContractWrite({
+    const mutate = async(_data: UserData | string) => {
+      const { request } = await prepareWriteContract({
         address: REGISTER_CONTRACT_ADDRESS,
         abi: REGISTER_CONTRACT_ABI,
         functionName: method + type,
-        args: [data],
-        enabled: data !== null,
-        onError: (err: any) => {
-          toast.error(getContractErrorMessage(err));
-        },
-    })
-  
-    const contract = useWriteContract(config);
-  
-    async function mutate(_data: UserData) {
-        await setData(_data);
-        contract.write?.();
+        args: [_data]
+      });
+
+      const result = await writeContract(request);
+
+      return result;
     }
   
     return {
-        mutate,
-        ...contract
+        mutate
     }
   };
   
