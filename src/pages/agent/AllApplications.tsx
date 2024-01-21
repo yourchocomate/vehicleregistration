@@ -17,7 +17,6 @@ import { useEffect, useState } from 'react';
 import { truncate } from "@/utils/Helpers";
 import ApplicationsTableRow from "@components/blocks/ApplicationsTableRow";
 import { useApp, useDebounce } from "@/hooks";
-import { useParams } from "react-router-dom";
 import { useAccount } from "wagmi";
 import ViewApplicationModal from "@/components/ViewApplicationModal";
 
@@ -62,7 +61,7 @@ const AllApplications = () => {
     }
   
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage] = useState(5);
   
     const data = filtered.length > 0 ? filtered : fetchedData;
     const totalPages = Math.ceil(data.length / rowsPerPage) || 1;
