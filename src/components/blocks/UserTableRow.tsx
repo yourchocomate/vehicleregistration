@@ -9,7 +9,6 @@ const UserTableRow : React.FC<UserTableRowBlockProps> = ({index, nid, name, bran
     const classes = isLast
         ? "p-4"
         : "p-4 border-b border-blue-gray-50";
-    console.log(role)
     return (
         <tr>
             <td className={classes}>

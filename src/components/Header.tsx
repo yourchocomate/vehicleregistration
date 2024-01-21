@@ -47,9 +47,8 @@ const Header = () => {
   return (
     <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4 border-none shadow-none bg-transparent backdrop-saturate-[]  backdrop-blur-none">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
+        <Link
+          to="/"
           className="mr-4 cursor-pointer py-1.5 font-medium flex flex-row items-center"
         >
           
@@ -65,7 +64,7 @@ const Header = () => {
             } />
           </div>
           <sup className="ml-6 text-xs font-normal">v1.0 - beta</sup>
-        </Typography>
+        </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="hidden lg:inline-block">
           <Web3Button />

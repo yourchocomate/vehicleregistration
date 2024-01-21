@@ -17,7 +17,5 @@ export const useContract = (functionName: string, args?: any[], account?: `0x${s
         args,
     });
 
-    console.log(result.error);
-
     return result;
 }
