@@ -11,7 +11,7 @@ import {
 function checkInString(message: string, errors: string[]) {
   let errorMessage = null;
   errors.forEach((error) => {
-    if (message.includes(error)) {
+    if (message == error) {
       return (errorMessage = error);
     }
   });
@@ -20,7 +20,8 @@ function checkInString(message: string, errors: string[]) {
 }
 
 export const getContractErrorMessage = (error: any) => {
-  const check = checkInString(error.message, [
+  const message = error?.message?.split(/\r?\n|\r|\n/g)[1]?.split(/(?:\r\n|\r|\n)/g)?.pop();
+  const check = checkInString(message, [
     ALREADY_REGISTERED,
     ALREADY_APPROVED,
     NOT_APPROVED_YET,
@@ -34,9 +35,9 @@ export const getContractErrorMessage = (error: any) => {
       case ADMIN_REMOVE:
         return "You can't remove the admin";
       case ALREADY_REGISTERED:
-        return "Vehicle already registered";
+        return "Already registered";
       case NOT_REGISTERED_YET:
-        return "Vehicle not registered yet";
+        return "Not registered yet";
       case ALREADY_APPROVED:
         return "Vehicle already approved";
       case NOT_APPROVED_YET:
@@ -47,7 +48,6 @@ export const getContractErrorMessage = (error: any) => {
         return "Something went wrong";
     }
   } else {
-    const message = error?.message?.split("Details:")[1]?.split("Version:")[0];
     return message && message.length > 0 ? message : "Something went wrong";
   }
 };

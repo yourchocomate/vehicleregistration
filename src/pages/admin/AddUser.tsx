@@ -2,6 +2,7 @@ import CustomSelect from "@/components/CustomSelect";
 import { BRANCHES } from "@/config/constants";
 import { useApp } from "@/hooks";
 import { useAddUpdateUser } from "@/hooks/contract-write/useAddUpdateUser";
+import { getContractErrorMessage } from "@/utils/ExceptionHandlers";
 import { truncate } from "@/utils/Helpers";
 import { Button, Card, Checkbox, Input, Typography } from "@material-tailwind/react";
 import { useState } from "react";
@@ -48,6 +49,9 @@ const AddAdmin = () => {
                 toast.success(`User Added: ${truncate(tx.hash, 10)}`);
                 navigate(role === "Admin" ? "/owner/manage-admins" : "/manage-agents");
             }
+        })
+        result.catch((e) => {
+            toast.error(getContractErrorMessage(e));
         })
     }
 

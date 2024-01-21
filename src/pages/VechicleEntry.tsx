@@ -68,6 +68,8 @@ const VehicleEntry = () => {
     const { data: agents, isLoading } = useReadContract().GetAgentList();
     const { entry } = useVehicleEntry("entry");
 
+    console.log(agents);
+
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const contract = entry(data);
