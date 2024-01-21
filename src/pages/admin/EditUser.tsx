@@ -13,7 +13,7 @@ const EditUser = () => {
     const navigate = useNavigate();
     const { address, role: Role } = useParams();
 
-    const [role, setRole] = useState<RoleType>(Role === "admin" ? "Admin" : "Agent");
+    const [role] = useState<RoleType>(Role === "admin" ? "Admin" : "Agent");
 
     const [data, setData] = useState<UserData>({
         _address: "",

@@ -61,7 +61,7 @@ const AllApplications = () => {
     }
   
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage] = useState(5);
   
     const data = filtered.length > 0 ? filtered : fetchedData;
     const totalPages = Math.ceil(data.length / rowsPerPage) || 1;

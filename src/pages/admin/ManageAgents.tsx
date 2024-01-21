@@ -27,7 +27,7 @@ const ManageAgents = () => {
 
     const [search, setSearch] = useState("");
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage] = useState(5);
 
     const [filtered, setFiltered] = useState<UserData[]>([]);
     const { isLoading, data: fetchedData} = useReadContract().GetAllAgents();

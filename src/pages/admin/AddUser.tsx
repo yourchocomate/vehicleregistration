@@ -73,7 +73,7 @@ const AddAdmin = () => {
                     <Input size="lg" name="created_at" label="Created At" type="date-time" value={data.created_at} onChange={handleInputChange}/>
                     {
                         user === "owner" && (
-                            <Checkbox name="role" checked={role === "Admin"} onChange={(e) => setRole(role === "Admin" ? "Agent" : "Admin")} label={role.toString()}/>
+                            <Checkbox name="role" checked={role === "Admin"} onChange={() => setRole(role === "Admin" ? "Agent" : "Admin")} label={role.toString()}/>
                         )
                     }
                 </div>
